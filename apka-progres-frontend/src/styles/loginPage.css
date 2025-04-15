@@ -1,5 +1,50 @@
-.mainPage {
-    background-color: white;
+html, body, #root {
+    margin: 0;
+    padding: 0;
     height: 100%;
+  }
+.mainPage {
+    font-family: 'Poppins', sans-serif;
+    background-color: rgb(172, 172, 172);
+    height: 100vh;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+
+}
+.LoginContainer {
+    background-color: white;
+    height: 75vh;
+    width: 45vw;
+    border-radius: 15px 15px 0 0;
+
+}
+.LoginPageNavBar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 8vh;
+    background-color:  dodgerblue;
+    border-radius: 15px 15px 0 0;
+    
+}
+.loginFormContainer{
+    height: 80%;
+    width: 100%;
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 0 0 15px 15px;
+}
+.Footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 8vh;
+    background-color: dodgerblue;
+    border-radius: 0 0 15px 15px;
 }
