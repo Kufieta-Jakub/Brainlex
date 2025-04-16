@@ -2,8 +2,10 @@ package com.example.brainlex.controller;
 
 import com.example.brainlex.model.UserDTO;
 import com.example.brainlex.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -11,6 +13,9 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api")
 public class LoggingController{
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     private final UserService userService;
 
     public LoggingController(UserService userService) {
@@ -21,9 +26,10 @@ public class LoggingController{
     {
         Optional<UserDTO> optionalUser = userService.getUserByEmail(user.getEmail());
         if(optionalUser.isPresent()) {
-
             UserDTO foundUser = optionalUser.get();
-            if(foundUser.getPassword().equals(user.getPassword()))
+            String encodedPasswordInDb = foundUser.getPassword();
+
+            if(passwordEncoder.matches(user.getPassword(),encodedPasswordInDb))
             {
                 return ResponseEntity.ok("Login successful");
             } else {
